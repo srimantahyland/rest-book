@@ -12,7 +12,7 @@ public class BookResourceTest {
     @Test
     public void testHelloEndpoint() {
         given()
-          .when().get("/C:/Program Files/Git/api/books")
+          .when().get("/api/books")
           .then()
              .statusCode(200)
              .body(is("Hello RESTEasy"));
