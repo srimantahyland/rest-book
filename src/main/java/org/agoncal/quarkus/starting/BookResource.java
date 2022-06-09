@@ -31,7 +31,6 @@ public class BookResource {
 
     @GET
     @Path("{id}")
-    @Produces(MediaType.TEXT_PLAIN)
     public Optional<Book> getBook(@PathParam("id") int id){
         return getAllBooks().stream().filter(book->book.id == id).findFirst();
     }
