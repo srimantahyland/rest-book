@@ -15,15 +15,14 @@ import java.util.Optional;
 @Produces(MediaType.APPLICATION_JSON)
 public class BookResource {
 
-    @Inject
-    BookRepository repository;
+
     @Inject
     Logger logger;
 
     @GET
     public List<Book> getAllBooks() {
         logger.info("Return all books");
-        return repository.getAllBooks();
+        return Book.listAll();
     }
 
     @GET
@@ -31,13 +30,13 @@ public class BookResource {
     @Produces(MediaType.TEXT_PLAIN)
     public int countAllBooks(){
         logger.info("Return the count of all books");
-        return repository.getAllBooks().size();
+        return Book.listAll().size();
     }
 
     @GET
     @Path("{id}")
-    public Optional<Book> getBook(@PathParam("id") int id){
+    public Book getBook(@PathParam("id") Long id){
         logger.info("Return book of the given id " + id);
-        return repository.getBook(id);
+        return Book.findById(id);
     }
 }
